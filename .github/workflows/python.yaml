@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-python@v3
         with:
          python-version: '3.9' 
-      # - name: Install Python dependencies
-      #   run: python -m pip install --upgrade pip requests
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip pipenv
       # - run: python --version
       # - run: pwd
       # - run: ls
