@@ -41,4 +41,6 @@ jobs:
           which pip3
           which pipenv
       - run: python3 ${GITHUB_WORKSPACE}/.github/workflows/python.py
+      - run: echo $SHELL
+      - run: pipenv shell
 
