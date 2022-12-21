@@ -16,7 +16,7 @@ jobs:
       #     python-version: 3.9
       - uses: actions/checkout@v2 
 
-      - run: pipx install "pipenv=2022.10.4"
+      - run: pipx install "pipenv==2022.10.4"
 
       - uses: actions/setup-python@v3
         with:
