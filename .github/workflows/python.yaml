@@ -41,7 +41,9 @@ jobs:
 
       # - run:  pipenv shell 
 
-      - run: pipenv sync --dev
+      - run: |
+        pipenv sync --dev
+        pipenv shell
 
       # - run: python --version
       # - run: pwd
