@@ -39,7 +39,7 @@ jobs:
       #   run: |
       #     pipenv install --deploy --dev
 
-      - run:  pipenv shell 
+      # - run:  pipenv shell 
 
       - run: pipenv sync --dev
 
