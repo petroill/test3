@@ -7,5 +7,5 @@ from datetime import datetime
 print("Hello World")
 print(datetime.now())
 
-command = subprocess.run(['ls'])
+command = subprocess.run(['ls'], stdout=subprocess.PIPE)
 print(command)
