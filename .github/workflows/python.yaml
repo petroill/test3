@@ -10,24 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-      - uses: actions/checkout@v2 
-      - uses: actions/setup-python@v3
+      - name: Install Python, pipenv and Pipfile packages
+        uses: palewire/install-python-pipenv-pipfile@v2
         with:
-         python-version: '3.9' 
+          python-version: 3.10.0
+      # - uses: actions/checkout@v2 
+      # - uses: actions/setup-python@v3
+      #   with:
+      #    python-version: '3.9' 
 
-      - name: Install Python dependencies
-        run: python -m pip install --upgrade pip pipenv wheel
+      # - name: Install Python dependencies
+      #   run: python -m pip install --upgrade pip pipenv wheel
 
-      - id: cache-pipenv
-        uses: actions/cache@v1
-        with:
-          path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+      # - id: cache-pipenv
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ~/.local/share/virtualenvs
+      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
 
-      - name: Install dependencies
-        if: steps.cache-pipenv.outputs.cache-hit != 'true'
-        run: |
-          pipenv install --deploy --dev
+      # - name: Install dependencies
+      #   if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      #   run: |
+      #     pipenv install --deploy --dev
 
       # - run: python --version
       # - run: pwd
