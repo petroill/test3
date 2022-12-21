@@ -21,5 +21,7 @@ jobs:
       - run: ls
       # - run: bash helloworld.sh
       - run: ls -la .github/
+      - run: echo ${GITHUB_WORKSPACE}
+      - run: cat ${GITHUB_WORKSPACE}/.github/workflows/bash.sh
       - run: cat ${GITHUB_WORKSPACE}/.github/myscrypt.py
 
