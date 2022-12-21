@@ -1,0 +1,25 @@
+on: 
+  workflow_dispatch:
+
+# env:
+#   greeting: "Hello"
+#   name: "Dan"
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v2 
+      - uses: actions/setup-python@v3
+        with:
+         python-version: '3.9' 
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip requests
+      - run: python --version
+      - run: pwd
+      - run: ls
+      # - run: bash helloworld.sh
+      - run: ls -la .github/
+      - run: python .github/myscrypt.py
+
