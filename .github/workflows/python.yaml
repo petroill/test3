@@ -15,26 +15,32 @@ jobs:
       #   with:
       #     python-version: 3.9
       - uses: actions/checkout@v2 
+
+      - run: pipx install "pipenv=2022.10.4"
+
       - uses: actions/setup-python@v3
         with:
          python-version: '3.9' 
+         cache: 'pipenv'
 
-      - name: Install Python dependencies
-        run: python -m pip install --upgrade pip pipenv wheel
+      - run: pipenv install --deploy --dev
 
-      - id: cache-pipenv
-        uses: actions/cache@v1
-        with:
-          path: ~/.local/share/virtualenvs
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+      # - name: Install Python dependencies
+      #   run: python -m pip install --upgrade pip pipenv wheel
 
-      - name: Install dependencies
-        if: steps.cache-pipenv.outputs.cache-hit != 'true'
-        run: |
-          pipenv install --deploy --dev
+      # - id: cache-pipenv
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ~/.local/share/virtualenvs
+      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
 
-      - run: pipenv shell  
-          
+      # - name: Install dependencies
+      #   if: steps.cache-pipenv.outputs.cache-hit != 'true'
+      #   run: |
+      #     pipenv install --deploy --dev
+
+      - run:  pipenv shell 
+
       - run: pipenv sync --dev
 
       # - run: python --version
